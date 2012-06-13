@@ -1,0 +1,8 @@
+<project name="setup-catalina-properties.xml" default="all" basedir=".">
+	<target name="all">
+		<copy file="${basedir}/Tomcat v6.0 Server at localhost-config/catalina.properties.template"
+			tofile="${basedir}/Tomcat v6.0 Server at localhost-config/catalina.properties" overwrite="true" />
+		<replace file="${basedir}/Tomcat v6.0 Server at localhost-config/catalina.properties" token="@@basedir@@" value="${basedir}" />
+		<replace file="${basedir}/Tomcat v6.0 Server at localhost-config/catalina.properties" token="\" value="/" />
+	</target>
+</project>

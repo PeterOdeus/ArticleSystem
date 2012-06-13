@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vplfMenu version="01" name="Vplf test vplfMenu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vplfMenu-schema.xsd">
+  <vplfMenuGroup displayname="start.label">
+    <vplfMenuItem displayname="start.label" href="/mvc/start" />
+  </vplfMenuGroup>
+  <vplfMenuGroup displayname="vplf">
+    <vplfMenuItem displayname="vplf.teamplace" href="https://teamplace.volvo.com/sites/vit-Java/default.aspx" />
+  </vplfMenuGroup>
+  <vplfMenuGroup displayname="Date">
+    <vplfMenuItem displayname="date.time" href="/mvc/date/time" />
+    <vplfMenuItem displayname="date.day" href="/mvc/date/day" />
+    <vplfMenuItem displayname="date.month" href="/mvc/date/month" />
+    <vplfMenuItem displayname="date.year" href="/mvc/date/year" />
+  </vplfMenuGroup>
+</vplfMenu>
+

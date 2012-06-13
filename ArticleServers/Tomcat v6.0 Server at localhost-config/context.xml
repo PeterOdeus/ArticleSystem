@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+
+    <!-- Uncomment this to enable Comet connection tacking (provides events
+         on session expiration as well as webapp lifecycle) -->
+    <!--
+    <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+    -->
+
+  <!-- Atomikos Support for the Tomcat server - register Atomikos as java:comp/UserTransaction -->
+  <Transaction factory="com.atomikos.icatch.jta.UserTransactionFactory" />
+  <!-- Also register Atomikos TransactionManager as java:comp/env/TransactionManager -->
+  <Resource name="TransactionManager"
+            auth="Container"
+            type="com.atomikos.icatch.jta.UserTransactionManager"
+            factory="org.apache.naming.factory.BeanFactory" />
+
+  <!-- Spring LoadTimeWeaver Support for the Tomcat server. -->
+  <Loader loaderClass="org.springframework.instrument.classloading.tomcat.TomcatInstrumentableClassLoader"
+          useSystemClassLoaderAsParent="false"/>
+
+  <!-- DataSources.  -->
+  <Resource name="jdbc/DataSource"
+            auth="Container"
+            type="com.atomikos.jdbc.AtomikosDataSourceBean"
+            factory="com.atomikos.tomcat.DataSourceBeanFactory"
+            uniqueResourceName="DataSource_Resource"
+            maxPoolSize="8"
+            xaDataSourceClassName="org.apache.derby.jdbc.ClientXADataSource"
+            xaProperties.databaseName="peterDB         xaProperties.connectionAttributes="serverName=localhost;portNumber=1527;user=APP;password=whatever;create=true"/>
+  <Resource name="jdbc/DataSource_NoTx"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="APP"
+            password="whatever"
+            driverClassName="org.apache.derby.jdbc.ClientDriver"
+            url="jdbc:derby://localhost:1527/peterDpeterDB"
+            maxActive="8"
+            maxIdle="4"/>
+
+  <!-- ConnectionFactories.  -->
+  <Resource name="jms/ConnectionFactory"
+            auth="Container"
+            type="com.atomikos.jms.AtomikosConnectionFactoryBean"
+            factory="com.atomikos.tomcat.ConnectionFactoryBeanFactory"
+            uniqueResourceName="ConnectionFactory_Resource"
+            xaConnectionFactoryClassName="org.apache.activemq.ActiveMQXAConnectionFactory"
+            xaProperties.brokerURL="tcp://localhost:61616?daemon=true"/>
+
+  <!-- Sample JMS Destination
+  <Resource name="jms/SampleQueue"
+            auth="Container"
+            type="org.apache.activemq.command.ActiveMQQueue"
+            description="SampleQueue"
+            factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+            physicalName="org.peter.SampleQueue"/>
+   -->
+
+</Context>

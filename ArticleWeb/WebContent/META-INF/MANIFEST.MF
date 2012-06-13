@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: ArticleWeb
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: org.peter.web
+Implementation-Build: wtp

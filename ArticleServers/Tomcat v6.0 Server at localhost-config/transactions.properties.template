@@ -1,0 +1,6 @@
+com.atomikos.icatch.service=com.atomikos.icatch.standalone.UserTransactionServiceFactory
+com.atomikos.icatch.automatic_resource_registration=true
+com.atomikos.icatch.output_dir=@@basedir@@/target/atomikos-logs
+com.atomikos.icatch.log_base_dir=@@basedir@@/target/atomikos-logs
+com.atomikos.icatch.enable_logging=true
+com.atomikos.icatch.console_log_level=INFO

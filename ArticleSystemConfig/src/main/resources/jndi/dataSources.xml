@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+  <!-- JNDI-based DataSources configuration -->
+
+  <context:property-placeholder location="classpath:jndi/dataSources.properties"/>
+
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+    <property name="targetDataSource" >
+      <bean class="org.springframework.jndi.JndiObjectFactoryBean">
+         <property name="jndiName" value="jdbc/DataSource" />
+         <property name="resourceRef" value="true" />
+      </bean> 
+    </property>
+  </bean>
+
+  <bean id="dataSource_NoTx" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName" value="jdbc/DataSource_NoTx" />
+    <property name="resourceRef" value="true" />
+  </bean>
+
+</beans>

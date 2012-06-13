@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="ArticleWeb" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">	
+	
+  <display-name>ArticleWeb</display-name>
+  
+  <listener>
+    <listener-class>com.volvo.jvs.runtime.springutils.ContextLoaderListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>springapp</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>springapp</servlet-name>
+    <url-pattern>/mvc/*</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/mvc/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <description>Sets the encoding to UTF-8 if it is null in the request</description>
+    <filter-name>Encoding</filter-name>
+    <filter-class>com.volvo.vplf.core.filter.EncodingFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>Encoding</filter-name>
+    <url-pattern>/mvc/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+	<servlet-name>dwr-invoker</servlet-name>
+	<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	<init-param>
+		<param-name>debug</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<init-param>
+		<param-name>allowScriptTagRemoting</param-name>
+		<param-value>true</param-value>
+	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>dwr-invoker</servlet-name>
+	<url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>  
+  
+    <env-entry>
+    <!--
+      vplfClientMode could debug,aggregat,strip or compressed default is compressed.
+            Another way to get a page running in debug mode 
+            is to add vplfClientMode=true as a request parameter since version 1.5.0
+    -->
+    <!-- uncomment to debug javascript an a redable way -->
+
+    <env-entry-name>vplfClientMode</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>compress</env-entry-value>  
+    <!-- <env-entry-value>aggregat</env-entry-value> -->
+    <!-- <env-entry-value>strip</env-entry-value>  -->
+   <!-- <env-entry-value>debug</env-entry-value> -->
+  </env-entry>
+  
+  <welcome-file-list>
+    <welcome-file>Shared/pages/index.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>

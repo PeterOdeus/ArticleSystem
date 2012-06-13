@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vplfMenuSupportingFunctions version="01" name="Vplf Menu Supporting Functions"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="VplfMenuSupportingFunctions.xsd">
+	<VplfLink text="menu.secondary.1" href="#" />
+	<VplfLink text="menu.secondary.2" href="#" />
+	<VplfLink text="menu.secondary.3" href="#" />
+</vplfMenuSupportingFunctions>

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/adtjavaee/!svn/ver/8684/JVS3/tags/JVS_3_0_6_R/refapps/Pos/CustomerDomain/src/main/resources/sql
+END
+customer_create_ddl.sql
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/adtjavaee/!svn/ver/8684/JVS3/tags/JVS_3_0_6_R/refapps/Pos/CustomerDomain/src/main/resources/sql/customer_create_ddl.sql
+END
+customer_drop_ddl.sql
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/adtjavaee/!svn/ver/8684/JVS3/tags/JVS_3_0_6_R/refapps/Pos/CustomerDomain/src/main/resources/sql/customer_drop_ddl.sql
+END

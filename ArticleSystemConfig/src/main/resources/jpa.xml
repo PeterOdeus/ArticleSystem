@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+  <context:property-placeholder location="classpath:dataSources.properties"/>
+
+  <!-- Default JPA configuration -->
+  <bean id="entityManagerFactory" abstract="true" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+
+    <property name="jpaPropertyMap">
+      <map>
+        <entry key="openjpa.TransactionMode" value="managed" />
+        <entry key="openjpa.ManagedRuntime" value="com.volvo.jvs.runtime.openjpa.ConfiguredJTAManagedRuntimeAdapter" />
+        <entry key="openjpa.Log" value="commons" />
+        <!-- Uncomment to enable automatic creation of Database Schema based on JPA mappings.
+        <entry key="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+         -->
+      </map>
+    </property>
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+        <property name="database" value="${dbDialect}" />
+      </bean>
+    </property>
+    <property name="persistenceUnitPostProcessors">
+      <list>
+        <!-- 
+          Post processor that sets the persistence unit's transaction mode
+          to JTA, and sets the JTADataSource, if jtaMode is set to true.
+          This is necessary because of two reasons :
+          - the TransactionType is set explicitly in persistence.xml
+          - If a DataSource is defined in Spring's entity manager, it is
+            injected into the persistence unit as a non-JTA-datasource.
+         -->
+        <bean class="com.volvo.jvs.runtime.springutils.JtaPersistenceUnitPostProcessor">
+          <property name="jtaMode" value="true"/> 
+          <property name="jtaDataSource" ref="dataSource"/>
+          <property name="nonJtaDataSource" ref="dataSource_NoTx"/>
+        </bean>
+      </list>
+    </property>
+  </bean>
+
+</beans>

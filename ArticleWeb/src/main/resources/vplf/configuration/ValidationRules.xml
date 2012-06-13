@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ValidationRule template. -->
+<vld:VplfValidationSet xmlns:vld="http://www.volvo.it.com/vplf/validation">
+<!--	
+	<VplfValidationSimpleRule id="FirstName" minLength="2" maxLength="12" input="[a-zA-Z]" final="^[a-zA-Z]{2,12}$" inputMessage="errors.na" finalMessage="First name must be only literals and with 2-12 characters" />
+
+	<vld:Rule id="LastName" minLength="2" maxLength="12" input="[a-zA-Z]" final="com.volvo.it.vplf.web.validation.LastNameCustomValidator" inputMessage="errors.na" finalMessage="Last name must be only literals and with 2-12 characters" />
+	
+	
+	<vld:Rule id="FirstName">
+ 			<vld:Rule depends="lastName" matchValue="DEFAULT" input="[a-zA-Z]" final="^[a-zA-Z]{12}$" inputMessage="errors.na" finalMessage="Fallback rule, which applies that the rule must be in range of A-Za-z and 12 characters" />
+			<Rule depends="lastName" matchValue="aa" input="[a-zA-Z]" final="^[a-zA-Z]{2,4}$" inputMessage="errors.na" finalMessage="Since last name is aa first name must be 2-4 characters, Param 0: {0}, Param 1: {1}, Param 2: {2}" />  
+			<vld:Rule depends="lastName" matchValue="bb" final="^[a-zA-Z]{5,10}$" inputMessage="errors.na" finalMessage="Since last name is bb first name must be 5-10 characters" />
+			<vld:Rule depends="lastName" matchValue="Lood" input="[0-9]" final="^[0-9]{3}$" inputMessage="errors.na" finalMessage="Since last name is bb first name must be 5-10 characters" />
+			<vld:Rule depends="lastName" matchValue="[a-zA-Z]*" matchType="regexp">
+					<vld:Rule depends="middleName" matchValue="[a-zA-Z]*" matchType="regexp" input="^[a-e]{2}$" final="^[a-e]{2}$" inputMessage="errors.na" finalMessage="With middle name {2} and last name as letters: {1} forces first name to be two character between a-e" />
+					<vld:Rule depends="middleName" matchValue="[0-9]*" matchType="regexp" input="^[f-g]{4}$" final="^[f-g]{4}$" inputMessage="errors.na" finalMessage="With middle name {2} and last name as letters: {1} forces first name to be four character between f-g" />
+			</vld:Rule>
+	</vld:Rule>
+	-->
+</vld:VplfValidationSet>

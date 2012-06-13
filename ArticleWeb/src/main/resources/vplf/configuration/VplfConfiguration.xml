@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<conf:VplfConfiguration path="vplf/configuration" xmlns:conf="http://www.volvo.it.com/vplf/configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.volvo.it.com/vplf/configuration ../../../src/main/resources/xsd/configuration/VplfConfiguration.xsd ">
+  <ResourceFiles>
+    <File name="MessageResources"/>
+  </ResourceFiles>
+  <ValidationFiles>
+    <File name="ValidationRules.xml"/>
+  </ValidationFiles>
+  <Menus>
+       <MenuFile>VplfMenu.xml</MenuFile>
+    	<SupportingFunctionsFile>VplfMenuSupportingFunctions.xml</SupportingFunctionsFile>
+  </Menus>
+  <Brandings DefaultBranding="branding.violin">
+    <Branding key="branding.volvoba" value="VolvoBA"/>
+    <Branding key="branding.volvogroup" value="VolvoGroup"/>
+    <Branding key="branding.violin" value="Violin"/>
+    <Branding key="branding.extranet" value="Extranet"/>
+    <Branding key="branding.mack" value="Mack"/>
+    <Branding key="branding.mackDual" value="MackDual"/>
+    <Branding key="branding.renault" value="Renault"/>
+  </Brandings>
+</conf:VplfConfiguration>
