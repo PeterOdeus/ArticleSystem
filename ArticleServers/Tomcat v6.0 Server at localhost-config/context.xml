@@ -52,14 +52,15 @@
             uniqueResourceName="DataSource_Resource"
             maxPoolSize="8"
             xaDataSourceClassName="org.apache.derby.jdbc.ClientXADataSource"
-            xaProperties.databaseName="peterDB         xaProperties.connectionAttributes="serverName=localhost;portNumber=1527;user=APP;password=whatever;create=true"/>
+            xaProperties.databaseName="<CHANGE_THIS>"
+            xaProperties.connectionAttributes="serverName=localhost;portNumber=1527;user=APP;password=whatever;create=true"/>
   <Resource name="jdbc/DataSource_NoTx"
             auth="Container"
             type="javax.sql.DataSource"
             username="APP"
             password="whatever"
             driverClassName="org.apache.derby.jdbc.ClientDriver"
-            url="jdbc:derby://localhost:1527/peterDpeterDB"
+            url="jdbc:derby://localhost:1527/<CHANGE_THIS>;create=true"
             maxActive="8"
             maxIdle="4"/>
 
