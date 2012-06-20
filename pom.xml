@@ -18,10 +18,10 @@
     <module>ArticleSystemConfig</module>
     <module>ArticleDomain</module>
     <module>ArticleWeb</module>
-    <module>ArticleServers</module>
     <module>ArticleGateway</module>
     <module>ArticleProxy</module>
     <module>ArticleUtility</module>
+    <module>ArticleServers</module>
   </modules>
 
   <!-- Modify with project-specific settings.

@@ -1,0 +1,36 @@
+<project name="createPosDb" default="db.create">
+<!-- 
+  This script drops  database tables
+ -->
+  <target name="db.drop">  
+    <echo>Dropping tables...</echo>
+    <sql driver="org.apache.derby.jdbc.ClientDriver"
+         url="jdbc:derby://localhost:1527/Pos_Db;create=true"
+         userid="APP" password="whatever" onerror="continue" >
+    	
+    	<transaction src="${project.root}/OrderDomain/src/main/resources/sql/order_drop_ddl.sql" />
+      	<transaction src="${project.root}/WarehouseDomain/src/main/resources/sql/warehouse_drop_ddl.sql" />
+      	<transaction src="${project.root}/CustomerDomain/src/main/resources/sql/customer_drop_ddl.sql" />
+    	<transaction src="${project.root}/PartDomain/src/main/resources/sql/part_drop_ddl.sql"/>
+
+    </sql>
+  </target>   
+
+	<!-- 
+	  This script creates database tables
+	 -->
+	<target name="db.create" depends="db.drop">  
+	    <echo>Creating tables...</echo>
+	    <sql driver="org.apache.derby.jdbc.ClientDriver"
+	         url="jdbc:derby://localhost:1527/Pos_Db;create=true"
+	         userid="APP" password="whatever" onerror="continue" >
+	    	<transaction src="${project.root}/PartDomain/src/main/resources/sql/part_create_ddl.sql"/>
+	    	<transaction src="${project.root}/CustomerDomain/src/main/resources/sql/customer_create_ddl.sql" />
+	    	<transaction src="${project.root}/WarehouseDomain/src/main/resources/sql/warehouse_create_ddl.sql" />
+	    	<transaction src="${project.root}/OrderDomain/src/main/resources/sql/order_create_ddl.sql" />
+
+	    </sql>
+	 </target>	
+
+</project>
+
