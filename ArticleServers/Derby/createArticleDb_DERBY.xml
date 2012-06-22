@@ -1,0 +1,30 @@
+<project name="createArticleDb" default="db.create">
+<!-- 
+  This script drops  database tables
+ -->
+  <target name="db.drop">  
+    <echo>Dropping tables...</echo>
+    <sql driver="org.apache.derby.jdbc.ClientDriver"
+         url="jdbc:derby://localhost:1527/ArticleDb;create=true"
+         userid="APP" password="whatever" onerror="continue" >
+    	
+    	<transaction src="${project.root}/ArticleDomain/src/main/resources/sql/article_drop_ddl.sql" />
+
+    </sql>
+  </target>   
+
+	<!-- 
+	  This script creates database tables
+	 -->
+	<target name="db.create" depends="db.drop">  
+	    <echo>Creating tables...</echo>
+	    <sql driver="org.apache.derby.jdbc.ClientDriver"
+	         url="jdbc:derby://localhost:1527/ArticleDb;create=true"
+	         userid="APP" password="whatever" onerous="continue" >
+	    	<transaction src="${project.root}/ArticleDomain/src/main/resources/sql/article_create_ddl.sql"/>
+
+	    </sql>
+	 </target>	
+
+</project>
+

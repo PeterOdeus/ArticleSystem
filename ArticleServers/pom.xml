@@ -56,7 +56,7 @@
                 <configuration>
                   <tasks>
                     <property name="project.root" value="${project.parent.basedir}"/>
-                    <ant antfile="${basedir}/Derby/createPosDb_DERBY.xml" dir="${basedir}" />
+                    <ant antfile="${basedir}/Derby/createArticleDb_DERBY.xml" dir="${basedir}" />
                   </tasks>
                 </configuration>
                 <goals>
